@@ -803,7 +803,7 @@ if(h.ge.HB.and.h.le.HT) then
         .or.(phi-d3phi.gt.PhiS.and.phi+d3phi.lt.PhiN)) &
     .and.((flam.lt.FlamW.and.flam+d3lam.gt.FlamW) &
         .or.(flam.lt.FlamE.and.flam+d3lam.gt.FlamE))) then
-        gggPhiPhiLam=(-vtess(phi+d3phi,flam-2.d0*d3lam,h)+4.d0*vtess(phi+d3phi,flam-d3lam,h) &
+        gggPhiPhiLam=-(-vtess(phi+d3phi,flam-2.d0*d3lam,h)+4.d0*vtess(phi+d3phi,flam-d3lam,h) &
             -3.d0*vtess(phi+d3phi,flam,h)+2.d0*vtess(phi,flam-2.d0*d3lam,h) &
             -8.d0*vtess(phi,flam-d3lam,h)+6.d0*v-vtess(phi-d3phi,flam-2.d0*d3lam,h) &
             +4.d0*vtess(phi-d3phi,flam-d3lam,h)-3.d0*vtess(phi-d3phi,flam,h) &
@@ -1778,8 +1778,8 @@ if(phi.ge.PhiS.and.phi.le.PhiN) then
             -5.d0*vtess(phi,flam+d3lam,h+d3h)+5.d0*vtess(phi,flam-d3lam,h+d3h) &
             +2.d0*vtess(phi,flam+d3lam,h)-2.d0*vtess(phi,flam-d3lam,h))/(2.d0*d3lam*d3h*d3h)
 ! case 6
-    elseif(((flam.lt.FlamW.and.flam+d3lam.gt.FlamW) &
-        .or.(flam.lt.FlamE.and.flam+d3lam.gt.FlamE)) &
+    elseif(((flam+d3lam.lt.FlamW).or.(flam-d3lam.gt.FlamE) &
+        .or.(flam-d3lam.gt.FlamW.and.flam+d3lam.lt.FlamE)) &
         .and.((h.lt.HB.and.h+d3h.gt.HB)&
         .or.(h.lt.HT.and.h+d3h.gt.HT))) then
         gggHHLam=(-vtess(phi,flam+d3lam,h-3.d0*d3h)+vtess(phi,flam-d3lam,h-3.d0*d3h) &
